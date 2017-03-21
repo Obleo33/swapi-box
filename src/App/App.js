@@ -8,12 +8,18 @@ class App extends Component {
     super()
     this.state = {
       data: {},
-      films: {},
+      film: {},
     }
   }
 
   componentWillMount() {
-    this.fetchData("films", "films")
+    fetch('https://swapi.co/api/films')
+      .then((response) => response.json())
+      .then((json) => {
+        const random = Math.floor((Math.random() * json.results.length))
+        this.setState({ film: json.results[random] })
+      })
+
   }
 
   fetchData(call, state) {
@@ -26,8 +32,7 @@ class App extends Component {
     return (
       <div className="App">
         <div className="film-container">
-          <Film
-            filmData={ this.state.films.results }/>
+          <Film filmData={ this.state.film }/>
         </div>
         <div className="swapi-cards">
           <h2>SWAPI BOX</h2>
