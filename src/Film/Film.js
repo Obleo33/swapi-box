@@ -1,13 +1,17 @@
 import React from 'react';
 
-const Film = ({ filmData }) => {
-console.log(filmData.results)
-const filmText = Object.keys(filmData).map((key, i) => {
-})
-
+const Film = ( { filmData } ) => {
+if(filmData){
+  const random = Math.floor((Math.random() * filmData.length) )
+  console.log(random);
   return(
-    <div>test</div>
+    <div>{filmData[random].opening_crawl}</div>
   )
+} else {
+  return(
+    <div></div>
+  )
+}
 }
 
 export default Film;

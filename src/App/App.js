@@ -7,33 +7,29 @@ class App extends Component {
     super()
     this.state = {
       data: {},
+      films: {},
     }
   }
 
   componentWillMount() {
-    this.fetchData("films")
+    this.fetchData("films", "films")
   }
 
-  fetchData(call) {
+  fetchData(call, state) {
     fetch(`https://swapi.co/api/${call}`)
     .then((response) => response.json())
-    .then((json) => { return this.setState({ data: json }) })
+    .then((json) => { return this.setState({ [state]: json }) })
   }
 
   render() {
-    console.log(this.state.data)
     return (
       <div className="App">
         <div className="film-container">
         </div>
         <div className="swapi-cards">
           <h2>SWAPI BOX</h2>
-          {/* <StarCards data={this.state.data.results}
-            fetch={() => this.fetchData()}
-            next={this.state.data.next}
-            previous={this.state.data.previous}/> */}
             <Film
-              filmData={ this.state.data }/>
+              filmData={ this.state.films.results }/>
             </div>
           </div>
         );
