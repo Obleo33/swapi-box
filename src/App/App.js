@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Film from '../Film/Film'
+import Button from '../button/button'
 
 class App extends Component {
   constructor() {
@@ -25,15 +26,18 @@ class App extends Component {
     return (
       <div className="App">
         <div className="film-container">
+          <Film
+            filmData={ this.state.films.results }/>
         </div>
         <div className="swapi-cards">
           <h2>SWAPI BOX</h2>
-            <Film
-              filmData={ this.state.films.results }/>
-            </div>
+          <Button fetchData={(call, state) => this.fetchData(call, state)} call='people'/>
+          <Button fetchData={(call, state) => this.fetchData(call, state)} call='vehicles'/>
+          <Button fetchData={(call, state) => this.fetchData(call, state)} call='planets'/>
           </div>
-        );
-      }
+        </div>
+      );
     }
+  }
 
 export default App;
