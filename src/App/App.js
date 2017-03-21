@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import ScrollingText from '../ScrollingText/ScrollingText'
+import Film from '../Film/Film'
 
 class App extends Component {
   constructor() {
@@ -16,8 +16,8 @@ class App extends Component {
 
   fetchData(call) {
     fetch(`https://swapi.co/api/${call}`)
-      .then((response) => response.json())
-      .then((json) => { return this.setState({ data: json }) })
+    .then((response) => response.json())
+    .then((json) => { return this.setState({ data: json }) })
   }
 
   render() {
@@ -29,14 +29,15 @@ class App extends Component {
         <div className="swapi-cards">
           <h2>SWAPI BOX</h2>
           {/* <StarCards data={this.state.data.results}
-                     fetch={() => this.fetchData()}
-                     next={this.state.data.next}
-                     previous={this.state.data.previous}/> */}
-              <ScrollingText
-                filmData={ this.state.data }/>
-      </div>
-    );
-  }
-}
+            fetch={() => this.fetchData()}
+            next={this.state.data.next}
+            previous={this.state.data.previous}/> */}
+            <Film
+              filmData={ this.state.data }/>
+            </div>
+          </div>
+        );
+      }
+    }
 
 export default App;
