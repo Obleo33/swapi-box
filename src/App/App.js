@@ -1,35 +1,36 @@
 import React, { Component } from 'react';
 import './App.css';
+import ScrollingText from '../ScrollingText/ScrollingText'
 
 class App extends Component {
   constructor() {
-    super(),
+    super()
     this.state = {
       data: {},
     }
   }
 
   componentWillMount() {
-    this.fetchData('people')
+    this.fetchData("films")
   }
 
   fetchData(call) {
-    const dataCall = fetch(`https://swapi.co/api/${call}`)
+    fetch(`https://swapi.co/api/${call}`)
       .then((response) => response.json())
-        .then((json) => { return this.setState({ data: json })})
+      .then((json) => { return this.setState({ data: json }) })
   }
 
   render() {
     console.log(this.state.data)
     return (
       <div className="App">
-        <div className="App-header">
-          <h2>Welcome to React</h2>
+          <h2>Swapi-Box</h2>
           {/* <StarCards data={this.state.data.results}
                      fetch={() => this.fetchData()}
                      next={this.state.data.next}
                      previous={this.state.data.previous}/> */}
-        </div>
+              <ScrollingText
+                filmData={ this.state.data }/>
       </div>
     );
   }
