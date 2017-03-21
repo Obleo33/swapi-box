@@ -4,13 +4,11 @@ import React from 'react';
 
 const Film = ( { filmData } ) => {
   if(filmData){
-    console.log(filmData)
-    const random = Math.floor((Math.random() * filmData.length) )
     return(
       <div>
-        <p>{filmData[random].opening_crawl}</p>
-        <p>{filmData[random].title}</p>
-        <p>{filmData[random].release_date}</p>
+        <p>{filmData.opening_crawl}</p>
+        <p>{filmData.title}</p>
+        <p>{filmData.release_date}</p>
       </div>
     )
   } else {
