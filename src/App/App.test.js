@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
+import { shallow, mount } from 'enzyme';
 
 describe('App', () => {
 
@@ -9,11 +10,25 @@ describe('App', () => {
     ReactDOM.render(<App />, div);
   });
 
-  it('has a dive with the class of swapi', () => {
+
+  it('should have an intial state of null for its props', () => {
     const wrapper = shallow(<App />)
 
-    expect(wrapper.find('.app'))
-  })
+    expect(wrapper.state().data).toEqual({});
+  });
+
+  // it('should have a component called ScrollingText', () => {
+  //   const wrapper = shallow(<App />)
+  //
+  //   expect(wrapper.find(ScrollingText)).to.have.length.of(1);
+  // });
+// });
+
+  // it('has a dive with the class of swapi', () => {
+  //   const wrapper = shallow(<App />)
+  //
+  //   expect(wrapper.find('.app'))
+  // })
 
 
 })

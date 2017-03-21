@@ -1,22 +1,23 @@
 import React, { Component } from 'react';
 import './App.css';
+import Film from '../Film/Film'
 
 class App extends Component {
   constructor() {
-    super(),
+    super()
     this.state = {
       data: {},
     }
   }
 
   componentWillMount() {
-    this.fetchData('people')
+    this.fetchData("films")
   }
 
   fetchData(call) {
-    const dataCall = fetch(`https://swapi.co/api/${call}`)
-      .then((response) => response.json())
-        .then((json) => { return this.setState({ data: json })})
+    fetch(`https://swapi.co/api/${call}`)
+    .then((response) => response.json())
+    .then((json) => { return this.setState({ data: json }) })
   }
 
   render() {
@@ -24,18 +25,19 @@ class App extends Component {
     return (
       <div className="App">
         <div className="film-container">
-
         </div>
         <div className="swapi-cards">
           <h2>SWAPI BOX</h2>
           {/* <StarCards data={this.state.data.results}
-                     fetch={() => this.fetchData()}
-                     next={this.state.data.next}
-                     previous={this.state.data.previous}/> */}
-        </div>
-      </div>
-    );
-  }
-}
+            fetch={() => this.fetchData()}
+            next={this.state.data.next}
+            previous={this.state.data.previous}/> */}
+            <Film
+              filmData={ this.state.data }/>
+            </div>
+          </div>
+        );
+      }
+    }
 
 export default App;
