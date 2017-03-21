@@ -24,7 +24,10 @@ class App extends Component {
     console.log(this.state.data)
     return (
       <div className="App">
-          <h2>Swapi-Box</h2>
+        <div className="film-container">
+        </div>
+        <div className="swapi-cards">
+          <h2>SWAPI BOX</h2>
           {/* <StarCards data={this.state.data.results}
                      fetch={() => this.fetchData()}
                      next={this.state.data.next}

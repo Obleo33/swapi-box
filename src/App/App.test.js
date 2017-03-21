@@ -4,10 +4,12 @@ import App from './App';
 import { shallow, mount } from 'enzyme';
 
 describe('App', () => {
+
   it('renders without crashing', () => {
     const div = document.createElement('div');
     ReactDOM.render(<App />, div);
   });
+
 
   it('should have an intial state of null for its props', () => {
     const wrapper = shallow(<App />)
@@ -20,4 +22,13 @@ describe('App', () => {
   //
   //   expect(wrapper.find(ScrollingText)).to.have.length.of(1);
   // });
-});
+// });
+
+  // it('has a dive with the class of swapi', () => {
+  //   const wrapper = shallow(<App />)
+  //
+  //   expect(wrapper.find('.app'))
+  // })
+
+
+})
