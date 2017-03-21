@@ -28,12 +28,12 @@ class App extends Component {
         </div>
         <div className="swapi-cards">
           <h2>SWAPI BOX</h2>
-            <Film
-              filmData={ this.state.films.results }/>
-            </div>
+          <Film
+            filmData={ this.state.films.results }/>
           </div>
-        );
-      }
+        </div>
+      );
     }
+  }
 
 export default App;
