@@ -1,10 +1,8 @@
 import React from 'react';
 
-
-const ScrollingText = ({ filmData }) => {
-
+const Film = ({ filmData }) => {
+console.log(filmData.results)
 const filmText = Object.keys(filmData).map((key, i) => {
-  console.log(key[results])
 })
 
   return(
@@ -12,4 +10,4 @@ const filmText = Object.keys(filmData).map((key, i) => {
   )
 }
 
-export default ScrollingText;
+export default Film;
