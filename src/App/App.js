@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 import Film from '../Film/Film';
 import Button from '../button/button';
-import People from '../People/People';
-import dataCleaner from '../dataHelper'
+import CardWrapper from '../CardWrapper/CardWrapper';
+
 
 class App extends Component {
   constructor() {
@@ -23,7 +23,7 @@ class App extends Component {
       .then((response) => response.json())
       .then((json) => {
         const random = Math.floor((Math.random() * json.results.length))
-        this.setState({ film: json.results[random] })
+        this.setState({ filmData: json.results[random] })
       })
 
   }
@@ -32,10 +32,6 @@ class App extends Component {
     fetch(`https://swapi.co/api/${call}`)
     .then((response) => response.json())
     .then((json) => { return this.setState({ [state]: json }) })
-  }
-
-  mountData(data, state){
-    this.setState({ [state]: data })
   }
 
   toggleView(){
@@ -51,7 +47,6 @@ class App extends Component {
         break
       default:
         console.log('hey')
-        dataCleaner()
     }
   }
 
@@ -59,15 +54,13 @@ class App extends Component {
     return (
       <div className="App">
         <div className="film-container">
-          <Film filmData={ this.state.film }/>
+          <Film filmData={ this.state.filmData }/>
         </div>
         <div className="swapi-headder">
           <h2>SWAPI BOX</h2>
           <Button fetchData={(call, state) => this.fetchData(call, state)} call='people'/>
-          <Button fetchData={(call, state) => this.fetchData(call, state)} call='vehicles'/>
-          <Button fetchData={(call, state) => this.fetchData(call, state)} call='planets'/>
         </div>
-          {this.toggleView()}
+          <CardWrapper data={this.state.data.results}/>
       </div>
     )
   }

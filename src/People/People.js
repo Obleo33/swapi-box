@@ -1,36 +1,40 @@
-// Name
-// Homeworld
-// Species
-// Population of Homeworld
 import React, { Component } from 'react'
-// import StarCards from '../StarCards/StarCards'
 
 class People extends Component{
-  constructor(data){
-    super(data)
+  constructor(){
+    super()
     this.state = {
-      data: {},
-      people: [],
+      name: '',
+      homeworld: '',
+      species: '',
+      population: '',
+      starred: false
     }
   }
 
-  dataLoad(){
-    this.setState({ data: this.props.data })
+  fetchData(call, state) {
+    fetch(call)
+    .then((response) => response.json())
+    .then((json) => { return this.setState({ [state]: json }) })
   }
 
-  peopleData(){
+  handleClick() {
 
+  }
+
+  componentDidMount(){
+    this.setState({ name: this.props.name,
+                    homeworld: this.fetchData(this.props.homeworld),
+                    species: ,
+                    population:
+                  })
   }
 
   render(){
-    if(this.props.data){
-      console.log(this.props.data)
-      return (
-        <div>hey</div>
-      )
-    }
+    console.log(this.state)
+    if(!this.props.data){ return null }
     return (
-      <div>nope</div>
+      <div>hey</div>
     )
   }
 }
