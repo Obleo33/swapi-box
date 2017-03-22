@@ -34,13 +34,6 @@ class App extends Component {
     .then((json) => { return this.setState({ [state]: json , view: call }) })
   }
 
-  
-  setView(call) {
-    this.setState({
-      view: [call],
-    })
-  }
-
   render() {
     return (
       <div className="App">
