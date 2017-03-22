@@ -28,7 +28,6 @@ class Planets extends Component{
   }
 
   componentDidMount(){
-    console.log(this.props.residents);
     this.setState({ name: this.props.name,
                     terrain: this.props.terrain,
                     population: this.props.population,
