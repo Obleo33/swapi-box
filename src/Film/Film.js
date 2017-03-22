@@ -1,8 +1,6 @@
 import React from 'react';
 
-
-
-const Film = ( { filmData } ) => {
+const Film = ({ filmData }) => {
   if(filmData){
     return(
       <div>
