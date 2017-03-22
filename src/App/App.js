@@ -40,12 +40,15 @@ class App extends Component {
         <div className="film-container">
           <Film filmData={ this.state.filmData }/>
         </div>
-        <div className="swapi-headder">
-          <h2>SWAPI BOX</h2>
-          <Button fetchData={(call, state) => this.fetchData(call, state)} call='people'/>
-          <Button fetchData={(call, state) => this.fetchData(call, state)} call='planets'/>
-        </div>
+        <div className="swapi">
+          <div className="swapi-nav">
+            <h2>SWAPI BOX</h2>
+            <Button fetchData={(call, state) => this.fetchData(call, state)} call='people'/>
+            <Button fetchData={(call, state) => this.fetchData(call, state)} call='planets'/>
+          </div>
           <CardWrapper data={this.state.data.results} view={this.state.view}/>
+        </div>
+
       </div>
     )
   }
