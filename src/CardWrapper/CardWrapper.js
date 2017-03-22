@@ -1,6 +1,7 @@
 import React from 'react';
 import People from '../People/People';
 import Planets from '../Planets/Planets';
+import Vehicles from '../Vehicles/Vehicles';
 
 const toggleView = (data, view) => {
   switch(view){
@@ -26,11 +27,18 @@ const toggleView = (data, view) => {
             )
           })
           break
+
         case 'vehicles':
-        console.log('vehicles')
+          return data.map(vehicle => {
+            return(
+              <Vehicles name={vehicle.name}
+                        model={vehicle.model}
+                        class={vehicle.vehicle_class}
+                        passengers={vehicle.passengers}/>
+            )
+          })
         break
         default:
-        console.log('hey')
       }
     }
 

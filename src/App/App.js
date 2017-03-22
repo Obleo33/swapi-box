@@ -44,6 +44,7 @@ class App extends Component {
           <h2>SWAPI BOX</h2>
           <Button fetchData={(call, state) => this.fetchData(call, state)} call='people'/>
           <Button fetchData={(call, state) => this.fetchData(call, state)} call='planets'/>
+          <Button fetchData={(call, state) => this.fetchData(call, state)} call='vehicles'/>
         </div>
           <CardWrapper data={this.state.data.results} view={this.state.view}/>
       </div>
