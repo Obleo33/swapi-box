@@ -31,23 +31,14 @@ class App extends Component {
   fetchData(call, state) {
     fetch(`https://swapi.co/api/${call}`)
     .then((response) => response.json())
-    .then((json) => { return this.setState({ [state]: json }) })
+    .then((json) => { return this.setState({ [state]: json , view: call }) })
   }
 
-  toggleView(){
-    switch(this.state.view){
-      case 'people':
-        console.log('people')
-        break
-      case 'vehicles':
-        console.log('vehicles')
-        break
-      case 'planets':
-        console.log('planets')
-        break
-      default:
-        console.log('hey')
-    }
+  
+  setView(call) {
+    this.setState({
+      view: [call],
+    })
   }
 
   render() {
@@ -59,8 +50,9 @@ class App extends Component {
         <div className="swapi-headder">
           <h2>SWAPI BOX</h2>
           <Button fetchData={(call, state) => this.fetchData(call, state)} call='people'/>
+          <Button fetchData={(call, state) => this.fetchData(call, state)} call='planets'/>
         </div>
-          <CardWrapper data={this.state.data.results}/>
+          <CardWrapper data={this.state.data.results} view={this.state.view}/>
       </div>
     )
   }
