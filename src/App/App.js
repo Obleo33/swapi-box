@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Film from '../Film/Film'
 import Button from '../button/button'
+import Planets from '../Planets/Planets'
 
 class App extends Component {
   constructor() {
@@ -32,7 +33,7 @@ class App extends Component {
     return (
       <div className="App">
         <div className="film-container">
-          <Film filmData={ this.state.film }/>
+          <Film filmData={ this.state.film } />
         </div>
         <div className="swapi-cards">
           <h2>SWAPI BOX</h2>
@@ -40,6 +41,7 @@ class App extends Component {
           <Button fetchData={(call, state) => this.fetchData(call, state)} call='vehicles'/>
           <Button fetchData={(call, state) => this.fetchData(call, state)} call='planets'/>
           </div>
+          <Planets planetsData={ this.state.data.results } />
         </div>
       );
     }
