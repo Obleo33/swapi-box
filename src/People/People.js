@@ -12,29 +12,33 @@ class People extends Component{
     }
   }
 
-  fetchData(call, state) {
-    fetch(call)
-    .then((response) => response.json())
-    .then((json) => { return this.setState({ [state]: json }) })
-  }
-
-  handleClick() {
-
+  fetchData(call, state, key) {
+    fetch(call).then(response => response.json())
+    .then(json => this.setState({ [state]: json[[key]] }))
   }
 
   componentDidMount(){
     this.setState({ name: this.props.name,
-                    homeworld: this.fetchData(this.props.homeworld),
-                    species: ,
-                    population:
+                    homeworld: this.fetchData(this.props.homeworld, 'homeworld', 'name'),
+                    species: this.fetchData(this.props.species, 'species', 'name'),
+                    population: this.fetchData(this.props.homeworld, 'population', 'population'),
                   })
   }
 
+  handleClick() {
+    console.log('clicked')
+  }
+
   render(){
-    console.log(this.state)
-    if(!this.props.data){ return null }
+    !this.props.data && null
     return (
-      <div>hey</div>
+      <div>
+        <p>{this.state.name}</p>
+        <p>{this.state.homeworld}</p>
+        <p>{this.state.species}</p>
+        <p>{this.state.population}</p>
+        <button onClick={this.handleClick.bind(this)}></button>
+      </div>
     )
   }
 }
