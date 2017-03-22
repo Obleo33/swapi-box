@@ -1,3 +1,17 @@
 .App {
   text-align: center;
+  display: flex;
+}
+
+
+.film-container {
+  height: 100vh;
+  background-color: pink;
+  max-width: 400px;
+  min-width: 200px;
+  padding: 20px 20px;
+}
+
+.swapi {
+  min-width: 500px
 }

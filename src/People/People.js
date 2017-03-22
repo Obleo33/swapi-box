@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import styles from './People'
 
 class People extends Component{
   constructor(){
@@ -26,18 +27,18 @@ class People extends Component{
   }
 
   handleClick() {
-    console.log('clicked')
+    console.log(this.state.name + ' clicked')
   }
 
   render(){
     !this.props.data && null
     return (
-      <div>
-        <p>{this.state.name}</p>
-        <p>{this.state.homeworld}</p>
-        <p>{this.state.species}</p>
-        <p>{this.state.population}</p>
-        <button onClick={this.handleClick.bind(this)}></button>
+      <div className="people-card">
+        <p>Name: {this.state.name}</p>
+        <p>Species: {this.state.species}</p>
+        <p>Homeworld: {this.state.homeworld}</p>
+        <p>Population: {this.state.population}</p>
+        <button className="favorite-button button" onClick={this.handleClick.bind(this)}>&#x2605;</button>
       </div>
     )
   }
