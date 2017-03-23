@@ -11,7 +11,8 @@ class App extends Component {
     this.state = {
       data: {},
       filmData: {},
-      view:''
+      view:'',
+      favorites: []
     }
   }
 
@@ -31,6 +32,11 @@ class App extends Component {
     .then((json) => { return this.setState({ [state]: json , view: call }) })
   }
 
+  addToFavorites(props) {
+    this.state.favorites.push({...props}),
+    this.setState({ favorites: this.state.favorites })
+  }
+
   render() {
     return (
       <div className="App">
@@ -44,7 +50,9 @@ class App extends Component {
             <Button fetchData={(call, state) => this.fetchData(call, state)} call='planets'/>
             <Button fetchData={(call, state) => this.fetchData(call, state)} call='vehicles'/>
           </div>
-          <CardWrapper data={this.state.data.results} view={this.state.view}/>
+          <CardWrapper data={this.state.data.results}
+                       view={this.state.view}
+                       addToFavorites={(props) => this.addToFavorites(props)}/>
         </div>
       </div>
     )

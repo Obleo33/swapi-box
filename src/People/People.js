@@ -29,6 +29,7 @@ class People extends Component{
 
   handleClick() {
     this.setState({ starred: !this.state.starred})
+    this.props.addToFavorites(this.props)
   }
 
   render(){

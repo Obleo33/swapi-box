@@ -4,7 +4,7 @@ import People from '../People/People';
 import Planets from '../Planets/Planets';
 import Vehicles from '../Vehicles/Vehicles';
 
-const toggleView = (data, view) => {
+const toggleView = (data, view, addToFavorites) => {
   switch(view){
     case 'people':
       return data.map((person, i) => {
@@ -14,7 +14,8 @@ const toggleView = (data, view) => {
                   species={person.species}
                   population={person.homeworld}
                   index={i}
-                  key={i}/>
+                  key={i}
+                  addToFavorites={(props) => addToFavorites(props)}/>
           )
         })
         break
@@ -28,7 +29,8 @@ const toggleView = (data, view) => {
                      climate={planet.climate}
                      residents={planet.residents}
                      index={i}
-                     key={i}/>
+                     key={i}
+                     addToFavorites={(props) => addToFavorites(props)}/>
             )
           })
           break
@@ -41,7 +43,8 @@ const toggleView = (data, view) => {
                         class={vehicle.vehicle_class}
                         passengers={vehicle.passengers}
                         index={i}
-                        key={i}/>
+                        key={i}
+                        addToFavorites={(props) => addToFavorites(props)}/>
             )
           })
         break
@@ -49,12 +52,12 @@ const toggleView = (data, view) => {
       }
     }
 
-const CardWrapper = ({ data, view }) => {
+const CardWrapper = ({ data, view, addToFavorites }) => {
   if(!data){return null}
 
   return (
     <div className='card-wrapper'>
-      {toggleView(data,view)}
+      {toggleView(data, view, addToFavorites)}
     </div>
   )
 }
