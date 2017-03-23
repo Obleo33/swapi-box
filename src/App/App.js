@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './reset.css'
 import './App.css';
 import Film from '../Film/Film';
 import Button from '../button/button';
@@ -11,7 +12,9 @@ class App extends Component {
     this.state = {
       data: {},
       filmData: {},
-      view:''
+      view:'',
+      favorites: [],
+      toggleFav: false
     }
   }
 
@@ -31,6 +34,31 @@ class App extends Component {
     .then((json) => { return this.setState({ [state]: json , view: call }) })
   }
 
+  addToFavorites(props, type) {
+    const favKeys = this.state.favorites.map(card => card.name)
+    const found = favKeys.indexOf(props.name)
+    if( found === -1){
+      this.state.favorites.push({name: props.name, data: [{...props}], view: type}),
+      this.setState({ favorites: this.state.favorites })
+    } else {
+      const filtered = this.state.favorites.filter((card, i) => i !== found)
+      this.setState({ favorites: filtered})
+    }
+  }
+
+  viewFavorites() {
+    this.state.favorites.length === 0 && null
+    return this.state.favorites.map(card => {
+      return <CardWrapper data={card.data}
+                          view={card.view}
+                          addToFavorites={(props, type) => this.addToFavorites(props, type)}/>
+    })
+  }
+
+  toggle() {
+    this.setState({ toggleFav: !this.state.toggleFav})
+  }
+
   render() {
     return (
       <div className="App">
@@ -40,11 +68,21 @@ class App extends Component {
         <div className="swapi">
           <div className="swapi-nav">
             <h2>SWAPI BOX</h2>
-            <Button className='people-button' fetchData={(call, state) => this.fetchData(call, state)} call='people'/>
-            <Button fetchData={(call, state) => this.fetchData(call, state)} call='planets'/>
-            <Button fetchData={(call, state) => this.fetchData(call, state)} call='vehicles'/>
+            <div className='categories'>
+              <Button fetchData={(call, state) => this.fetchData(call, state)} call='people'/>
+              <Button fetchData={(call, state) => this.fetchData(call, state)} call='planets'/>
+              <Button fetchData={(call, state) => this.fetchData(call, state)} call='vehicles'/>
+            </div>
+            <button onClick={() => this.toggle()}>View Favorites {this.state.favorites.length}</button>
           </div>
-          <CardWrapper data={this.state.data.results} view={this.state.view}/>
+          <div className='swapi-cards'>
+            <div className='swapi-favorites'>
+              {this.state.toggleFav? this.viewFavorites(): null}
+            </div>
+            <CardWrapper data={this.state.data.results}
+                         view={this.state.view}
+                         addToFavorites={(props, type) => this.addToFavorites(props, type)}/>
+          </div>
         </div>
       </div>
     )

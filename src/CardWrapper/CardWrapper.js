@@ -1,10 +1,10 @@
 import React from 'react';
-import styles from './CardWrapper'
+import './CardWrapper.css'
 import People from '../People/People';
 import Planets from '../Planets/Planets';
 import Vehicles from '../Vehicles/Vehicles';
 
-const toggleView = (data, view) => {
+const toggleView = (data, view, addToFavorites) => {
   switch(view){
     case 'people':
       return data.map((person, i) => {
@@ -13,8 +13,9 @@ const toggleView = (data, view) => {
                   homeworld={person.homeworld}
                   species={person.species}
                   population={person.homeworld}
-                  index={i}
-                  key={i}/>
+                  index={'people'+i}
+                  key={i}
+                  addToFavorites={(props, type) => addToFavorites(props, type)}/>
           )
         })
         break
@@ -27,8 +28,9 @@ const toggleView = (data, view) => {
                      population={planet.population}
                      climate={planet.climate}
                      residents={planet.residents}
-                     index={i}
-                     key={i}/>
+                     index={'planets'+i}
+                     key={i}
+                     addToFavorites={(props, type) => addToFavorites(props, type)}/>
             )
           })
           break
@@ -38,10 +40,11 @@ const toggleView = (data, view) => {
             return(
               <Vehicles name={vehicle.name}
                         model={vehicle.model}
-                        class={vehicle.vehicle_class}
+                        vehicle_class={vehicle.vehicle_class}
                         passengers={vehicle.passengers}
-                        index={i}
-                        key={i}/>
+                        index={'vehicles'+i}
+                        key={i}
+                        addToFavorites={(props, type) => addToFavorites(props, type)}/>
             )
           })
         break
@@ -49,12 +52,12 @@ const toggleView = (data, view) => {
       }
     }
 
-const CardWrapper = ({ data, view }) => {
+const CardWrapper = ({ data, view, addToFavorites }) => {
   if(!data){return null}
 
   return (
     <div className='card-wrapper'>
-      {toggleView(data,view)}
+      {toggleView(data, view, addToFavorites)}
     </div>
   )
 }

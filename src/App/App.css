@@ -1,3 +1,12 @@
+
+@font-face {
+    font-family: 'Rubik One', sans-serif;
+    src: url("https://fonts.googleapis.com/css?family=Rubik+Mono+One|Rubik+One|Rubik");
+}
+body {
+  font-family: 'Rubik One', sans-serif;
+}
+
 .App {
   text-align: center;
   display: flex;
@@ -6,12 +15,69 @@
 
 .film-container {
   height: 100vh;
-  background-color: pink;
-  max-width: 400px;
-  min-width: 200px;
+  background-image: url('http://media.idownloadblog.com/wp-content/uploads/2015/12/Star-Wars-The-Force-Awakens-Wallpaper-iDownloadBlog-X-Wings.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #ffffff;
+  width: 20%;
+  min-width: 175px;
   padding: 20px 20px;
 }
 
 .swapi {
-  min-width: 500px
+  width: 80%;
+  height: 100%;
+}
+
+.swapi-favorites {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  background-color: purple;
+}
+
+.swapi-nav {
+  background-image: url('https://i.ytimg.com/vi/voWpbz1De_M/maxresdefault.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 150px;
+}
+
+.swapi-nav h2 {
+  font-size: 40px;
+  color: #ffffff;
+  padding: 20px 20px;
+}
+
+.card {
+  background-color: gold;
+  width: 175px;
+  height: 250px;
+  border: 1px solid black;
+  margin: 5px 5px;
+}
+
+.card-head {
+  padding: 10px 10px;
+  height: 20%;
+  background-color: lightgrey;
+}
+
+.card-body {
+  padding: 10px 10px;
+}
+
+.card h3 {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.card p {
+  font-size: 13px;
+}
+
+.swapi-cards {
+  backgroun: black;
 }

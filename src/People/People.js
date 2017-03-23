@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import styles from './People'
+import './People.css'
 import classNames from 'classnames'
 
 class People extends Component{
@@ -29,11 +29,13 @@ class People extends Component{
 
   handleClick() {
     this.setState({ starred: !this.state.starred})
+    this.props.addToFavorites(this.props, 'people')
   }
 
   render(){
     this.cardClass = classNames({
       "people-card": true,
+      "card": true,
       "favorite": this.state.starred
     })
     this.buttonClass = classNames({
@@ -43,12 +45,16 @@ class People extends Component{
 
     !this.props.data && null
     return (
-      <div className={this.cardClass} key={this.props.index}>
-        <p>Name: {this.state.name}</p>
-        <p>Species: {this.state.species}</p>
-        <p>Homeworld: {this.state.homeworld}</p>
-        <p>Population: {this.state.population}</p>
-        <button className={this.buttonClass} onClick={this.handleClick.bind(this)}>&#x2605;</button>
+      <div className={this.cardClass} key={'people' + this.props.index}>
+        <div className="card-head">
+          <h3>{this.state.name}</h3>
+          <button className={this.buttonClass} onClick={this.handleClick.bind(this)}>&#x2605;</button>
+        </div>
+        <div className='card-body'>
+          <p>Species: {this.state.species}</p>
+          <p>Homeworld: {this.state.homeworld}</p>
+          <p>Population: {this.state.population !== 'unknown'? parseInt(this.state.population).toLocaleString(): 'unknown'}</p>
+        </div>
       </div>
     )
   }
