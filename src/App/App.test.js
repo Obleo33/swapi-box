@@ -1,34 +1,55 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
+import CardWrapper from '../CardWrapper/CardWrapper'
 import { shallow, mount } from 'enzyme';
+import fetchMock from 'fetch-mock';
+import Button from '../button/button'
 
 describe('App', () => {
 
-  it('renders without crashing', () => {
-    const div = document.createElement('div');
-    ReactDOM.render(<App />, div);
+
+  it('should render three button components', () => {
+    const wrapper = mount(<App />);
+
+    expect(wrapper.find('Button').length).toBe(3);
   });
 
+  it('should render a CardWrapper component', () => {
+    const wrapper = mount(<App />);
 
-  it('should have an intial state of null for its props', () => {
-    const wrapper = shallow(<App />)
-
-    expect(wrapper.state().data).toEqual({});
+    expect(wrapper.find('CardWrapper').length).toBe(1);
   });
 
-  // it('should have a component called ScrollingText', () => {
-  //   const wrapper = shallow(<App />)
-  //
-  //   expect(wrapper.find(ScrollingText)).to.have.length.of(1);
-  // });
-// });
+  it('should render a Film component', () => {
+    const wrapper = mount(<App />);
 
-  // it('has a dive with the class of swapi', () => {
-  //   const wrapper = shallow(<App />)
-  //
-  //   expect(wrapper.find('.app'))
-  // })
+    expect(wrapper.find('Film').length).toBe(1);
+  });
+
+  it('has a state of data that defaults to an empty object', () => {
+    const wrapper = shallow(<App />);
+
+    expect(typeof wrapper.state().data).toBe('object');
+  });
+
+  it('has a state of filmData that defaults to an empty object', () => {
+    const wrapper = shallow(<App />);
+
+    expect(typeof wrapper.state().filmData).toBe('object');
+  });
+
+  it('has a state of view that defaults to an empty string', () => {
+    const wrapper = shallow(<App />);
+
+    expect(typeof wrapper.state().view).toBe('string');
+  });
+
+  it('should have a people button that pulls back the people object', () => {
+    const wrapper = mount(<App />)
+    const button = wrapper.find(Button)
 
 
-})
+  });
+
+ });
