@@ -25,6 +25,7 @@ class Vehicles extends Component{
                     vehicle_class: this.props.vehicle_class,
                     passengers: this.props.passengers,
                   })
+
   }
 
   handleClick() {

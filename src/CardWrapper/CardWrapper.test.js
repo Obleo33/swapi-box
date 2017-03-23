@@ -6,7 +6,6 @@ import { shallow, mount } from 'enzyme';
 
 describe('CardWrapper', () => {
   it('should return a div', () => {
-    const wrapper = shallow(<CardWrapper />);
-    console.log(wrapper)
+    const wrapper = mount(<CardWrapper />);
   });
 });

@@ -4,7 +4,7 @@ import People from '../People/People';
 import Planets from '../Planets/Planets';
 import Vehicles from '../Vehicles/Vehicles';
 
-const toggleView = (data, view, addToFavorites) => {
+const toggleView = (data, view, addToFavorites, favorites) => {
   switch(view){
     case 'people':
       return data.map((person, i) => {
@@ -15,7 +15,8 @@ const toggleView = (data, view, addToFavorites) => {
                   population={person.homeworld}
                   index={'people'+i}
                   key={i}
-                  addToFavorites={(props, type) => addToFavorites(props, type)}/>
+                  addToFavorites={(props, type) => addToFavorites(props, type)}
+                  favorites={favorites}/>
           )
         })
         break
@@ -30,7 +31,8 @@ const toggleView = (data, view, addToFavorites) => {
                      residents={planet.residents}
                      index={'planets'+i}
                      key={i}
-                     addToFavorites={(props, type) => addToFavorites(props, type)}/>
+                     addToFavorites={(props, type) => addToFavorites(props, type)}
+                     favorites={favorites}/>
             )
           })
           break
@@ -44,7 +46,8 @@ const toggleView = (data, view, addToFavorites) => {
                         passengers={vehicle.passengers}
                         index={'vehicles'+i}
                         key={i}
-                        addToFavorites={(props, type) => addToFavorites(props, type)}/>
+                        addToFavorites={(props, type) => addToFavorites(props, type)}
+                        favorites={favorites}/>
             )
           })
         break
@@ -52,12 +55,11 @@ const toggleView = (data, view, addToFavorites) => {
       }
     }
 
-const CardWrapper = ({ data, view, addToFavorites }) => {
+const CardWrapper = ({ data, view, addToFavorites, favorites }) => {
   if(!data){return null}
-
   return (
     <div className='card-wrapper'>
-      {toggleView(data, view, addToFavorites)}
+      {toggleView(data, view, addToFavorites, favorites)}
     </div>
   )
 }

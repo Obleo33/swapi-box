@@ -61,3 +61,7 @@ class People extends Component{
 }
 
 export default People;
+
+// if(this.props.favorites.indexOf(this.props.name) > -1){
+//   this.setState({starred: true})
+// }
