@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './reset.css'
 import './App.css';
 import Film from '../Film/Film';
 import Button from '../button/button';

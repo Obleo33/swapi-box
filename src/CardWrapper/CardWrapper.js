@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './CardWrapper'
+import './CardWrapper.css'
 import People from '../People/People';
 import Planets from '../Planets/Planets';
 import Vehicles from '../Vehicles/Vehicles';

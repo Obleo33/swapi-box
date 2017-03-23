@@ -1,3 +1,12 @@
+
+@font-face {
+    font-family: 'Rubik One', sans-serif;
+    src: url("https://fonts.googleapis.com/css?family=Rubik+Mono+One|Rubik+One|Rubik");
+}
+body {
+  font-family: 'Rubik One', sans-serif;
+}
+
 .App {
   text-align: center;
   display: flex;
@@ -16,6 +25,12 @@
   min-width: 500px
 }
 
+.swapi-nav {
+  background-image: url(http://more-sky.com/data/out/12/IMG_531358.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 .card {
   width: 200px;
   height: 250px;
@@ -25,4 +40,8 @@
 
 .card p {
   font-size: 13px;
+}
+
+.swapi-cards {
+  backgroun: black;
 }

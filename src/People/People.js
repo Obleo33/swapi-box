@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import styles from './People'
+import './People.css'
 import classNames from 'classnames'
 
 class People extends Component{

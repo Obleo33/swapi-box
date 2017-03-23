@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import styles from './Vehicles'
+import './Vehicles.css'
 import classNames from 'classnames'
 
 class Vehicles extends Component{
