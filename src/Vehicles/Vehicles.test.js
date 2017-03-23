@@ -1,4 +1,4 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import People from "./People"
+import Vehicles from './Vehicles'
 import { shallow, mount } from 'enzyme';

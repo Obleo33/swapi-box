@@ -7,35 +7,41 @@ import Vehicles from '../Vehicles/Vehicles';
 const toggleView = (data, view) => {
   switch(view){
     case 'people':
-      return data.map(person => {
+      return data.map((person, i) => {
         return (
           <People name={person.name}
                   homeworld={person.homeworld}
                   species={person.species}
-                  population={person.homeworld}/>
+                  population={person.homeworld}
+                  index={i}
+                  key={i}/>
           )
         })
         break
 
       case 'planets':
-        return data.map(planet => {
+        return data.map((planet,i) => {
           return(
             <Planets name={planet.name}
                      terrain={planet.terrain}
                      population={planet.population}
                      climate={planet.climate}
-                     residents={planet.residents}/>
+                     residents={planet.residents}
+                     index={i}
+                     key={i}/>
             )
           })
           break
 
         case 'vehicles':
-          return data.map(vehicle => {
+          return data.map((vehicle, i) => {
             return(
               <Vehicles name={vehicle.name}
                         model={vehicle.model}
                         class={vehicle.vehicle_class}
-                        passengers={vehicle.passengers}/>
+                        passengers={vehicle.passengers}
+                        index={i}
+                        key={i}/>
             )
           })
         break

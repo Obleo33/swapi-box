@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import styles from './Planets'
+import classNames from 'classnames'
 
 class Planets extends Component{
   constructor(){
@@ -37,19 +39,28 @@ class Planets extends Component{
   }
 
   handleClick() {
-    console.log('clicked')
+    this.setState({ starred: !this.state.starred})
   }
 
   render(){
+    this.cardClass = classNames({
+      "planet-card": true,
+      "favorite": this.state.starred
+    })
+    this.buttonClass = classNames({
+      "favorite-button": true,
+      "favorite": this.state.starred
+    })
+
     !this.props.data && null
     return (
-      <div>
+      <div className={this.cardClass} key={this.props.index}>
         <p>{this.state.name}</p>
         <p>{this.state.terrain}</p>
         <p>{this.state.population}</p>
         <p>{this.state.climate}</p>
         <p>{this.state.residents}</p>
-        <button onClick={this.handleClick.bind(this)}></button>
+        <button className={this.buttonClass} onClick={this.handleClick.bind(this)}>&#x2605;</button>
       </div>
     )
   }

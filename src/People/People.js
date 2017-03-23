@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import styles from './People'
+import classNames from 'classnames'
 
 class People extends Component{
   constructor(){
@@ -27,18 +28,27 @@ class People extends Component{
   }
 
   handleClick() {
-    console.log(this.state.name + ' clicked')
+    this.setState({ starred: !this.state.starred})
   }
 
   render(){
+    this.cardClass = classNames({
+      "people-card": true,
+      "favorite": this.state.starred
+    })
+    this.buttonClass = classNames({
+      "favorite-button": true,
+      "favorite": this.state.starred
+    })
+
     !this.props.data && null
     return (
-      <div className="people-card">
+      <div className={this.cardClass} key={this.props.index}>
         <p>Name: {this.state.name}</p>
         <p>Species: {this.state.species}</p>
         <p>Homeworld: {this.state.homeworld}</p>
         <p>Population: {this.state.population}</p>
-        <button className="favorite-button button" onClick={this.handleClick.bind(this)}>&#x2605;</button>
+        <button className={this.buttonClass} onClick={this.handleClick.bind(this)}>&#x2605;</button>
       </div>
     )
   }

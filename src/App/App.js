@@ -10,9 +10,6 @@ class App extends Component {
     super()
     this.state = {
       data: {},
-      peopleData: [],
-      planetData: [],
-      vehicleData: [],
       filmData: {},
       view:''
     }
@@ -52,6 +49,12 @@ class App extends Component {
       </div>
     )
   }
+}
+
+App.propType = {
+  data: React.PropTypes.object.isRequired,
+  filmData: React.PropTypes.object.isRequired,
+  view: React.PropTypes.string
 }
 
 export default App;
