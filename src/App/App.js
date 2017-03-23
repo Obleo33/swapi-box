@@ -40,7 +40,7 @@ class App extends Component {
         <div className="swapi">
           <div className="swapi-nav">
             <h2>SWAPI BOX</h2>
-            <Button fetchData={(call, state) => this.fetchData(call, state)} call='people'/>
+            <Button className='people-button' fetchData={(call, state) => this.fetchData(call, state)} call='people'/>
             <Button fetchData={(call, state) => this.fetchData(call, state)} call='planets'/>
             <Button fetchData={(call, state) => this.fetchData(call, state)} call='vehicles'/>
           </div>

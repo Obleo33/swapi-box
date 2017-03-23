@@ -4,15 +4,28 @@ import App from './App';
 import CardWrapper from '../CardWrapper/CardWrapper'
 import { shallow, mount } from 'enzyme';
 import fetchMock from 'fetch-mock';
+import Button from '../button/button'
 
 describe('App', () => {
 
 
-  // it('should render a CardWrapper component', () => {
-  //   const wrapper = shallow(<App />);
-  //
-  //   expect(wrapper.find(CardWrapper)).to.have.length(1);
-  // });
+  it('should render three button components', () => {
+    const wrapper = mount(<App />);
+
+    expect(wrapper.find('Button').length).toBe(3);
+  });
+
+  it('should render a CardWrapper component', () => {
+    const wrapper = mount(<App />);
+
+    expect(wrapper.find('CardWrapper').length).toBe(1);
+  });
+
+  it('should render a Film component', () => {
+    const wrapper = mount(<App />);
+
+    expect(wrapper.find('Film').length).toBe(1);
+  });
 
   it('has a state of data that defaults to an empty object', () => {
     const wrapper = shallow(<App />);
@@ -32,23 +45,11 @@ describe('App', () => {
     expect(typeof wrapper.state().view).toBe('string');
   });
 
-  it('does the thing', () => {
-    
+  it('should have a people button that pulls back the people object', () => {
+    const wrapper = mount(<App />)
+    const button = wrapper.find(Button)
+
+
   });
-
-//   it('displays an error if fetching groceries fails', async () => {
-// fetchMock.get('/api/v1/groceries', {
-//   status: 500
-// });
-//
-// const wrapper = mount(<App />);
-// await wrapper.update();
-//
-// expect(wrapper.state('errorStatus')).toEqual('Error fetching groceries');
-// expect(wrapper.find('.error').length).toEqual(1);
-// });
-
-
-
 
  });
