@@ -45,6 +45,7 @@ class Planets extends Component{
   render(){
     this.cardClass = classNames({
       "planet-card": true,
+      "card": true,
       "favorite": this.state.starred
     })
     this.buttonClass = classNames({
@@ -55,15 +56,20 @@ class Planets extends Component{
     !this.props.data && null
     return (
       <div className={this.cardClass} key={this.props.index}>
-        <p>{this.state.name}</p>
-        <p>{this.state.terrain}</p>
-        <p>{this.state.population}</p>
-        <p>{this.state.climate}</p>
-        <p>{this.state.residents}</p>
-        <button className={this.buttonClass} onClick={this.handleClick.bind(this)}>&#x2605;</button>
+        <div className="card-head">
+          <h3>{this.state.name}</h3>
+          <button className={this.buttonClass} onClick={this.handleClick.bind(this)}>&#x2605;</button>
+        </div>
+        <p>Terrain: {this.state.terrain}</p>
+        <p>Population: {this.state.population !== 'unknown'? parseInt(this.state.population).toLocaleString(): 'unknown'}</p>
+        <p>Climate: {this.state.climate}</p>
+        <p>Residents: {this.state.residents.length? this.state.residents.join(', '): 'unknown'}</p>
       </div>
     )
   }
 }
 
 export default Planets;
+
+
+// parseInt(this.state.population).toLocaleString()

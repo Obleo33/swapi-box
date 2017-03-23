@@ -34,6 +34,7 @@ class People extends Component{
   render(){
     this.cardClass = classNames({
       "people-card": true,
+      "card": true,
       "favorite": this.state.starred
     })
     this.buttonClass = classNames({
@@ -44,11 +45,13 @@ class People extends Component{
     !this.props.data && null
     return (
       <div className={this.cardClass} key={this.props.index}>
-        <p>Name: {this.state.name}</p>
+        <div className="card-head">
+          <h3>{this.state.name}</h3>
+          <button className={this.buttonClass} onClick={this.handleClick.bind(this)}>&#x2605;</button>
+        </div>
         <p>Species: {this.state.species}</p>
         <p>Homeworld: {this.state.homeworld}</p>
-        <p>Population: {this.state.population}</p>
-        <button className={this.buttonClass} onClick={this.handleClick.bind(this)}>&#x2605;</button>
+        <p>Population: {this.state.population !== 'unknown'? parseInt(this.state.population).toLocaleString(): 'unknown'}</p>
       </div>
     )
   }

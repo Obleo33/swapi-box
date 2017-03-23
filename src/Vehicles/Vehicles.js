@@ -34,6 +34,7 @@ class Vehicles extends Component{
   render(){
     this.cardClass = classNames({
       "vehicle-card": true,
+      "card": true,
       "favorite": this.state.starred
     })
     this.buttonClass = classNames({
@@ -45,11 +46,13 @@ class Vehicles extends Component{
     !this.props.data && null
     return (
       <div className={this.cardClass} key={this.props.index}>
-        <p>{this.state.name}</p>
-        <p>{this.state.model}</p>
-        <p>{this.state.class}</p>
-        <p>{this.state.passengers}</p>
-        <button className={this.buttonClass} onClick={this.handleClick.bind(this)}>&#x2605;</button>
+        <div className="card-head">
+          <h3>{this.state.name}</h3>
+          <button className={this.buttonClass} onClick={this.handleClick.bind(this)}>&#x2605;</button>
+        </div>
+        <p>Model: {this.state.model}</p>
+        <p>Class: {this.state.class}</p>
+        <p>Passengers: {this.state.passengers}</p>
       </div>
     )
   }
