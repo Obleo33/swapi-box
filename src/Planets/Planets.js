@@ -61,10 +61,12 @@ class Planets extends Component{
           <h3>{this.state.name}</h3>
           <button className={this.buttonClass} onClick={this.handleClick.bind(this)}>&#x2605;</button>
         </div>
-        <p>Terrain: {this.state.terrain}</p>
-        <p>Population: {this.state.population !== 'unknown'? parseInt(this.state.population).toLocaleString(): 'unknown'}</p>
-        <p>Climate: {this.state.climate}</p>
-        <p>Residents: {this.state.residents.length? this.state.residents.join(', '): 'unknown'}</p>
+        <div className='card-body'>
+          <p>Terrain: {this.state.terrain}</p>
+          <p>Population: {this.state.population !== 'unknown'? parseInt(this.state.population).toLocaleString(): 'unknown'}</p>
+          <p>Climate: {this.state.climate}</p>
+          <p>Residents: {this.state.residents.length? this.state.residents.join(', '): 'unknown'}</p>
+        </div>
       </div>
     )
   }
