@@ -32,7 +32,7 @@ describe('Planets', () => {
   it('has a state of residents that defaults to an empty array', () => {
     const wrapper = shallow(<Planets />);
 
-    expect(typeof wrapper.state().residents).toBe('array');
+    expect(wrapper.state().residents).toEqual([]);
   });
 
   it('has a state of starred that defaults to a boolean', () => {

@@ -21,13 +21,13 @@ describe('Vehicle', () => {
     it('has a state of class that defaults to an empty string', () => {
       const wrapper = shallow(<Vehicles />);
 
-      expect(typeof wrapper.state().class).toBe('string');
+      expect(typeof wrapper.state().vehicle_class).toBe('string');
     });
 
     it('has a state of passengers that defaults to an empty string', () => {
       const wrapper = shallow(<Vehicles />);
 
-      expect(typeof wrapper.state().passengers).toBe('string');
+      expect(wrapper.state().passengers).toEqual('');
     });
 
     it('has a state of starred that defaults to a boolean', () => {

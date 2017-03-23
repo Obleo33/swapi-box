@@ -43,6 +43,7 @@ class App extends Component {
     } else {
       const filtered = this.state.favorites.filter((card, i) => i !== found)
       this.setState({ favorites: filtered})
+      filtered.length === 0 && this.setState({ toggleFav: false})
     }
   }
 
@@ -56,7 +57,9 @@ class App extends Component {
   }
 
   toggle() {
-    this.setState({ toggleFav: !this.state.toggleFav})
+    if(this.state.favorites.length > 0){
+      this.setState({ toggleFav: !this.state.toggleFav})
+    }
   }
 
   render() {
@@ -81,7 +84,8 @@ class App extends Component {
             </div>
             <CardWrapper data={this.state.data.results}
                          view={this.state.view}
-                         addToFavorites={(props, type) => this.addToFavorites(props, type)}/>
+                         addToFavorites={(props, type) => this.addToFavorites(props, type)}
+                         favorites={this.state.favorites.map(card => card.name)}/>
           </div>
         </div>
       </div>

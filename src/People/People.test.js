@@ -9,7 +9,7 @@ describe('People', () => {
   it('should render a People Card', () => {
     const wrapper = shallow(<People />);
 
-    expect(wrapper.find('div').length).toBe(1);
+    expect(wrapper.find('.people-card').length).toBe(1);
   });
 
   it('has a state of name that defaults to an empty string', () => {
