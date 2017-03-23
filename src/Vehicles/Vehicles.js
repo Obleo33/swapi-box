@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import styles from './Vehicles'
+import classNames from 'classnames'
 
 class Vehicles extends Component{
   constructor(){
@@ -26,18 +28,28 @@ class Vehicles extends Component{
   }
 
   handleClick() {
-    console.log('clicked')
+    this.setState({ starred: !this.state.starred})
   }
 
   render(){
+    this.cardClass = classNames({
+      "vehicle-card": true,
+      "favorite": this.state.starred
+    })
+    this.buttonClass = classNames({
+      "favorite-button": true,
+      "favorite": this.state.starred
+    })
+
+
     !this.props.data && null
     return (
-      <div>
+      <div className={this.cardClass} key={this.props.index}>
         <p>{this.state.name}</p>
         <p>{this.state.model}</p>
         <p>{this.state.class}</p>
         <p>{this.state.passengers}</p>
-        <button onClick={this.handleClick.bind(this)}></button>
+        <button className={this.buttonClass} onClick={this.handleClick.bind(this)}>&#x2605;</button>
       </div>
     )
   }
