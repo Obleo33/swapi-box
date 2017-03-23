@@ -51,9 +51,11 @@ class Vehicles extends Component{
           <h3>{this.state.name}</h3>
           <button className={this.buttonClass} onClick={this.handleClick.bind(this)}>&#x2605;</button>
         </div>
-        <p>Model: {this.state.model}</p>
-        <p>Class: {this.state.vehicle_class}</p>
-        <p>Passengers: {this.state.passengers}</p>
+        <div className='card-body'>
+          <p>Model: {this.state.model}</p>
+          <p>Class: {this.state.vehicle_class}</p>
+          <p>Passengers: {this.state.passengers}</p>
+        </div>
       </div>
     )
   }

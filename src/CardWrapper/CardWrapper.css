@@ -1,5 +1,6 @@
 .card-wrapper {
   text-align: center;
-  background-color: lightgrey;
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }

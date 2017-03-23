@@ -7,8 +7,8 @@ const Film = ( { filmData } ) => {
     return(
       <div>
         <p>{filmData.opening_crawl}</p>
-        <p>{filmData.title}</p>
-        <p>{filmData.release_date}</p>
+        <h3>{filmData.title}</h3>
+        <h4>{filmData.release_date}</h4>
       </div>
     )
   } else {

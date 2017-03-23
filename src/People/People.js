@@ -50,9 +50,11 @@ class People extends Component{
           <h3>{this.state.name}</h3>
           <button className={this.buttonClass} onClick={this.handleClick.bind(this)}>&#x2605;</button>
         </div>
-        <p>Species: {this.state.species}</p>
-        <p>Homeworld: {this.state.homeworld}</p>
-        <p>Population: {this.state.population !== 'unknown'? parseInt(this.state.population).toLocaleString(): 'unknown'}</p>
+        <div className='card-body'>
+          <p>Species: {this.state.species}</p>
+          <p>Homeworld: {this.state.homeworld}</p>
+          <p>Population: {this.state.population !== 'unknown'? parseInt(this.state.population).toLocaleString(): 'unknown'}</p>
+        </div>
       </div>
     )
   }

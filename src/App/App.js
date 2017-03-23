@@ -68,10 +68,12 @@ class App extends Component {
         <div className="swapi">
           <div className="swapi-nav">
             <h2>SWAPI BOX</h2>
+            <div className='categories'>
+              <Button fetchData={(call, state) => this.fetchData(call, state)} call='people'/>
+              <Button fetchData={(call, state) => this.fetchData(call, state)} call='planets'/>
+              <Button fetchData={(call, state) => this.fetchData(call, state)} call='vehicles'/>
+            </div>
             <button onClick={() => this.toggle()}>View Favorites {this.state.favorites.length}</button>
-            <Button fetchData={(call, state) => this.fetchData(call, state)} call='people'/>
-            <Button fetchData={(call, state) => this.fetchData(call, state)} call='planets'/>
-            <Button fetchData={(call, state) => this.fetchData(call, state)} call='vehicles'/>
           </div>
           <div className='swapi-cards'>
             <div className='swapi-favorites'>
