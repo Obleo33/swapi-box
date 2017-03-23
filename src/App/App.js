@@ -36,12 +36,21 @@ class App extends Component {
     const favKeys = this.state.favorites.map(card => card.name)
     const found = favKeys.indexOf(props.name)
     if( found === -1){
-      this.state.favorites.push({...props, type: type}),
+      this.state.favorites.push({name: props.name, data: [{...props}], view: type}),
       this.setState({ favorites: this.state.favorites })
     } else {
       const filtered = this.state.favorites.filter((card, i) => i !== found)
       this.setState({ favorites: filtered})
     }
+  }
+
+  viewFavorites() {
+    this.state.favorites.length === 0 && null
+    return this.state.favorites.map(card => {
+      return <CardWrapper data={card.data}
+                          view={card.view}
+                          addToFavorites={(props, type) => this.addToFavorites(props, type)}/>
+    })
   }
 
   render() {
@@ -57,9 +66,14 @@ class App extends Component {
             <Button fetchData={(call, state) => this.fetchData(call, state)} call='planets'/>
             <Button fetchData={(call, state) => this.fetchData(call, state)} call='vehicles'/>
           </div>
-          <CardWrapper data={this.state.data.results}
-                       view={this.state.view}
-                       addToFavorites={(props, type) => this.addToFavorites(props, type)}/>
+          <div className='swapi-cards'>
+            <div className='swapi-favorites'>
+              {this.viewFavorites()}
+            </div>
+            <CardWrapper data={this.state.data.results}
+                         view={this.state.view}
+                         addToFavorites={(props, type) => this.addToFavorites(props, type)}/>
+          </div>
         </div>
       </div>
     )

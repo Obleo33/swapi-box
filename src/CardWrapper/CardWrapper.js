@@ -13,7 +13,7 @@ const toggleView = (data, view, addToFavorites) => {
                   homeworld={person.homeworld}
                   species={person.species}
                   population={person.homeworld}
-                  index={i}
+                  index={'people'+i}
                   key={i}
                   addToFavorites={(props, type) => addToFavorites(props, type)}/>
           )
@@ -28,7 +28,7 @@ const toggleView = (data, view, addToFavorites) => {
                      population={planet.population}
                      climate={planet.climate}
                      residents={planet.residents}
-                     index={i}
+                     index={'planets'+i}
                      key={i}
                      addToFavorites={(props, type) => addToFavorites(props, type)}/>
             )
@@ -42,7 +42,7 @@ const toggleView = (data, view, addToFavorites) => {
                         model={vehicle.model}
                         class={vehicle.vehicle_class}
                         passengers={vehicle.passengers}
-                        index={i}
+                        index={'vehicles'+i}
                         key={i}
                         addToFavorites={(props, type) => addToFavorites(props, type)}/>
             )

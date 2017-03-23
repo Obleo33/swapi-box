@@ -45,7 +45,7 @@ class People extends Component{
 
     !this.props.data && null
     return (
-      <div className={this.cardClass} key={this.props.index}>
+      <div className={this.cardClass} key={'people' + this.props.index}>
         <div className="card-head">
           <h3>{this.state.name}</h3>
           <button className={this.buttonClass} onClick={this.handleClick.bind(this)}>&#x2605;</button>
