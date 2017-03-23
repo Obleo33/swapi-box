@@ -15,7 +15,7 @@ const toggleView = (data, view, addToFavorites) => {
                   population={person.homeworld}
                   index={i}
                   key={i}
-                  addToFavorites={(props) => addToFavorites(props)}/>
+                  addToFavorites={(props, type) => addToFavorites(props, type)}/>
           )
         })
         break
@@ -30,7 +30,7 @@ const toggleView = (data, view, addToFavorites) => {
                      residents={planet.residents}
                      index={i}
                      key={i}
-                     addToFavorites={(props) => addToFavorites(props)}/>
+                     addToFavorites={(props, type) => addToFavorites(props, type)}/>
             )
           })
           break
@@ -44,7 +44,7 @@ const toggleView = (data, view, addToFavorites) => {
                         passengers={vehicle.passengers}
                         index={i}
                         key={i}
-                        addToFavorites={(props) => addToFavorites(props)}/>
+                        addToFavorites={(props, type) => addToFavorites(props, type)}/>
             )
           })
         break

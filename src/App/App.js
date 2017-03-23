@@ -32,9 +32,16 @@ class App extends Component {
     .then((json) => { return this.setState({ [state]: json , view: call }) })
   }
 
-  addToFavorites(props) {
-    this.state.favorites.push({...props}),
-    this.setState({ favorites: this.state.favorites })
+  addToFavorites(props, type) {
+    const favKeys = this.state.favorites.map(card => card.name)
+    const found = favKeys.indexOf(props.name)
+    if( found === -1){
+      this.state.favorites.push({...props, type: type}),
+      this.setState({ favorites: this.state.favorites })
+    } else {
+      const filtered = this.state.favorites.filter((card, i) => i !== found)
+      this.setState({ favorites: filtered})
+    }
   }
 
   render() {
@@ -52,7 +59,7 @@ class App extends Component {
           </div>
           <CardWrapper data={this.state.data.results}
                        view={this.state.view}
-                       addToFavorites={(props) => this.addToFavorites(props)}/>
+                       addToFavorites={(props, type) => this.addToFavorites(props, type)}/>
         </div>
       </div>
     )
