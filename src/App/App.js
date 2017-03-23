@@ -12,7 +12,8 @@ class App extends Component {
       data: {},
       filmData: {},
       view:'',
-      favorites: []
+      favorites: [],
+      toggleFav: false
     }
   }
 
@@ -53,6 +54,10 @@ class App extends Component {
     })
   }
 
+  toggle() {
+    this.setState({ toggleFav: !this.state.toggleFav})
+  }
+
   render() {
     return (
       <div className="App">
@@ -62,13 +67,14 @@ class App extends Component {
         <div className="swapi">
           <div className="swapi-nav">
             <h2>SWAPI BOX</h2>
+            <button onClick={() => this.toggle()}>View Favorites {this.state.favorites.length}</button>
             <Button fetchData={(call, state) => this.fetchData(call, state)} call='people'/>
             <Button fetchData={(call, state) => this.fetchData(call, state)} call='planets'/>
             <Button fetchData={(call, state) => this.fetchData(call, state)} call='vehicles'/>
           </div>
           <div className='swapi-cards'>
             <div className='swapi-favorites'>
-              {this.viewFavorites()}
+              {this.state.toggleFav? this.viewFavorites(): null}
             </div>
             <CardWrapper data={this.state.data.results}
                          view={this.state.view}

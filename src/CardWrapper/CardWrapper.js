@@ -40,7 +40,7 @@ const toggleView = (data, view, addToFavorites) => {
             return(
               <Vehicles name={vehicle.name}
                         model={vehicle.model}
-                        class={vehicle.vehicle_class}
+                        vehicle_class={vehicle.vehicle_class}
                         passengers={vehicle.passengers}
                         index={'vehicles'+i}
                         key={i}
