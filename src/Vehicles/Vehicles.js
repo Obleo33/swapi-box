@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import styles from './Vehicles'
+import './Vehicles.css'
 import classNames from 'classnames'
 
 class Vehicles extends Component{
@@ -8,7 +8,7 @@ class Vehicles extends Component{
     this.state = {
       name: '',
       model: '',
-      class: '',
+      vehicle_class: '',
       passengers: '',
       starred: false
     }
@@ -22,7 +22,7 @@ class Vehicles extends Component{
   componentDidMount(){
     this.setState({ name: this.props.name,
                     model: this.props.model,
-                    class: this.props.class,
+                    vehicle_class: this.props.vehicle_class,
                     passengers: this.props.passengers,
                   })
   }
@@ -46,13 +46,13 @@ class Vehicles extends Component{
 
     !this.props.data && null
     return (
-      <div className={this.cardClass} key={this.props.index}>
+      <div className={this.cardClass} key={'vehicles' + this.props.index}>
         <div className="card-head">
           <h3>{this.state.name}</h3>
           <button className={this.buttonClass} onClick={this.handleClick.bind(this)}>&#x2605;</button>
         </div>
         <p>Model: {this.state.model}</p>
-        <p>Class: {this.state.class}</p>
+        <p>Class: {this.state.vehicle_class}</p>
         <p>Passengers: {this.state.passengers}</p>
       </div>
     )
